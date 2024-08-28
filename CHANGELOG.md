@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/SamChangi/pennant-depth/compare/v1.1.6...v1.1.7) (2024-08-28)
+
+
+### Bug Fixes
+
+* resolution ([90ac015](https://github.com/SamChangi/pennant-depth/commit/90ac01594bd4a0348c2093924478ca0730f05662))
+
 ### [1.1.6](https://github.com/SamChangi/pennant-depth/compare/v1.1.5...v1.1.6) (2024-08-28)
 
 
