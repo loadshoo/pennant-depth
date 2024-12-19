@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.9](https://github.com/SamChangi/pennant-depth/compare/v1.1.7...v1.1.9) (2024-12-19)
+
+
+### Bug Fixes
+
+* number comma format issue ([c78ea46](https://github.com/SamChangi/pennant-depth/commit/c78ea46955e57311ad16ad10d4fdd47ea126def4))
+
 ### [1.1.7](https://github.com/SamChangi/pennant-depth/compare/v1.1.6...v1.1.7) (2024-08-28)
 
 
