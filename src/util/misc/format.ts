@@ -133,7 +133,7 @@ export function tickFormat(ticks: Date[], interval: Interval) {
  * @param decimalPlaces Number of decimal places to display
  */
 export const numberFormatter = (decimalPlaces: number): Intl.NumberFormat =>
-  new Intl.NumberFormat("en-IN", {
+  new Intl.NumberFormat("en-US", {
     maximumFractionDigits: decimalPlaces,
     minimumFractionDigits: decimalPlaces,
   });
