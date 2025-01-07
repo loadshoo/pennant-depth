@@ -49,7 +49,7 @@ export class HorizontalAxis extends Container {
       () =>
         new Text("", {
           fill: 0xffffff,
-          fontFamily: "monospace",
+          fontFamily: "Arial",
           fontSize: FONT_SIZE,
         }),
     );

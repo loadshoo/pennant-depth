@@ -10,7 +10,7 @@ type LabelColors = Pick<Colors, "backgroundLabel" | "buyStroke" | "sellStroke">;
 export class Label extends Container {
   private text: Text = new Text("", {
     fill: 0xffffff,
-    fontFamily: "monospace",
+    fontFamily: "Arial",
     fontSize: 12,
   });
 
@@ -30,14 +30,15 @@ export class Label extends Container {
     anchor: { x: number; y: number },
     resolution: number = 1,
     colors: LabelColors,
-    camp: string = 'buy',
+    camp: string = "buy",
   ) {
     this.text.x = x;
     this.text.y = y;
     this.text.text = text;
     this.text.anchor.x = anchor.x;
     this.text.anchor.y = anchor.y;
-    this.text.style.fill = camp === 'buy' ? colors.buyStroke : colors.sellStroke;
+    this.text.style.fill =
+      camp === "buy" ? colors.buyStroke : colors.sellStroke;
 
     const width = resolution * this.text.width;
     const height = resolution * this.text.height;

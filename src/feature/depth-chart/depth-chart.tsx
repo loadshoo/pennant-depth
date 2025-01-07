@@ -146,24 +146,30 @@ export const DepthChart = forwardRef(
 
     // Update chart when dimensions or data change
     useEffect(() => {
-      chartRef.current.resize(
-        devicePixelContentBoxSizeInlineSize
-          ? devicePixelContentBoxSizeInlineSize / window.devicePixelRatio
-          : width,
-        devicePixelContentBoxSizeBlockSize
-          ? devicePixelContentBoxSizeBlockSize / window.devicePixelRatio
-          : height,
-      );
+      chartRef.current.resize(width, height);
 
       chartRef.current.data = data;
       chartRef.current.render();
-    }, [
-      height,
-      width,
-      data,
-      devicePixelContentBoxSizeInlineSize,
-      devicePixelContentBoxSizeBlockSize,
-    ]);
+    }, [height, width, data]);
+    // useEffect(() => {
+    //   chartRef.current.resize(
+    //     devicePixelContentBoxSizeInlineSize
+    //       ? devicePixelContentBoxSizeInlineSize / window.devicePixelRatio
+    //       : width,
+    //     devicePixelContentBoxSizeBlockSize
+    //       ? devicePixelContentBoxSizeBlockSize / window.devicePixelRatio
+    //       : height
+    //   );
+
+    //   chartRef.current.data = data;
+    //   chartRef.current.render();
+    // }, [
+    //   height,
+    //   width,
+    //   data,
+    //   devicePixelContentBoxSizeInlineSize,
+    //   devicePixelContentBoxSizeBlockSize,
+    // ]);
 
     useEffect(() => {
       chartRef.current.indicativePrice = indicativePrice;

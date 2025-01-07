@@ -51,12 +51,12 @@ export class HorizontalAxis extends Container {
     for (const node of ticks) {
       const text = new Text(tickFormat(node), {
         fill: colors.textSecondary,
-        fontFamily: "monospace",
+        fontFamily: "Arial",
         fontSize: FONT_SIZE,
       });
       const tickMark = new Text("|", {
         fill: colors.textSecondary,
-        fontFamily: "monospace",
+        fontFamily: "Arial",
         fontWeight: "bold",
         fontSize: 5,
       });

@@ -298,84 +298,84 @@ export const Binance: Story<DepthChartProps> = (args) => {
     sell: [],
   });
 
-  useEffect(() => {
-    const ws = new WebSocket("wss://stream.binance.com/stream");
-    ws.onopen = (event) => {
-      console.log("WS ==> connnect ok");
-      const msg = {
-        method: "SUBSCRIBE",
-        params: ["btcusdt@depth20@1000ms"],
-        id: 1,
-      };
-      ws.send(JSON.stringify(msg));
-    };
-    ws.onmessage = (event) => {
-      setIsLoading(false);
-      // console.log("WS ==> Receiving messages from the server");
-      // console.log(event.data);
-      const wsData = JSON.parse(event.data);
-      if ("data" in wsData) {
-        const json = wsData.data;
-        if (json.asks.length > 0 && json.bids.length > 0) {
-          setData({
-            sell: json.asks.map((ask: [string, string]) => ({
-              price: +ask[0],
-              volume: 0,
-            })),
-            buy: json.bids.map((bid: [string, string]) => ({
-              price: +bid[0],
-              volume: +bid[1],
-            })),
-          });
-        }
-      }
-    };
-    ws.onerror = (event) => {
-      setIsLoading(false);
-      console.log("WS ==> ERROR");
-    };
+  // useEffect(() => {
+  //   const ws = new WebSocket("wss://stream.binance.com/stream");
+  //   ws.onopen = (event) => {
+  //     console.log("WS ==> connnect ok");
+  //     const msg = {
+  //       method: "SUBSCRIBE",
+  //       params: ["btcusdt@depth20@1000ms"],
+  //       id: 1,
+  //     };
+  //     ws.send(JSON.stringify(msg));
+  //   };
+  //   ws.onmessage = (event) => {
+  //     setIsLoading(false);
+  //     // console.log("WS ==> Receiving messages from the server");
+  //     // console.log(event.data);
+  //     const wsData = JSON.parse(event.data);
+  //     if ("data" in wsData) {
+  //       const json = wsData.data;
+  //       if (json.asks.length > 0 && json.bids.length > 0) {
+  //         setData({
+  //           sell: json.asks.map((ask: [string, string]) => ({
+  //             price: +ask[0],
+  //             volume: 0,
+  //           })),
+  //           buy: json.bids.map((bid: [string, string]) => ({
+  //             price: +bid[0],
+  //             volume: +bid[1],
+  //           })),
+  //         });
+  //       }
+  //     }
+  //   };
+  //   ws.onerror = (event) => {
+  //     setIsLoading(false);
+  //     console.log("WS ==> ERROR");
+  //   };
 
-    return () => {
-      console.log("WS ==> disconnnect close");
-      const msg = {
-        method: "UNSUBSCRIBE",
-        params: ["btcusdt@depth"],
-        id: 1,
-      };
-      ws.send(JSON.stringify(msg));
-      ws.close();
-    };
-  }, []);
+  //   return () => {
+  //     console.log("WS ==> disconnnect close");
+  //     const msg = {
+  //       method: "UNSUBSCRIBE",
+  //       params: ["btcusdt@depth"],
+  //       id: 1,
+  //     };
+  //     ws.send(JSON.stringify(msg));
+  //     ws.close();
+  //   };
+  // }, []);
   // console.log("WS data ==>", data);
 
-  // useInterval(() => {
-  //   async function fetchData() {
-  //     const res = await fetch(
-  //       `https://www.binance.com/api/v3/depth?symbol=BTCUSDT&limit=20`
-  //     );
+  useInterval(() => {
+    async function fetchData() {
+      const res = await fetch(
+        `https://www.binance.com/api/v3/depth?symbol=BTCUSDT&limit=20`,
+      );
 
-  //     const json = await res.json();
-  //     setData({
-  //       sell: orderBy(
-  //         json.asks.map((ask: [string, string]) => ({
-  //           price: +ask[0],
-  //           volume: +ask[1],
-  //         })),
-  //         ["price"]
-  //       ),
-  //       buy: orderBy(
-  //         json.bids.map((bid: [string, string]) => ({
-  //           price: +bid[0],
-  //           volume: +bid[1],
-  //         })),
-  //         ["price"],
-  //         ["desc"]
-  //       ),
-  //     });
-  //     setIsLoading(false);
-  //   }
-  //   fetchData();
-  // }, 1000);
+      const json = await res.json();
+      setData({
+        sell: orderBy(
+          json.asks.map((ask: [string, string]) => ({
+            price: +ask[0],
+            volume: +ask[1],
+          })),
+          ["price"],
+        ),
+        buy: orderBy(
+          json.bids.map((bid: [string, string]) => ({
+            price: +bid[0],
+            volume: +bid[1],
+          })),
+          ["price"],
+          ["desc"],
+        ),
+      });
+      setIsLoading(false);
+    }
+    fetchData();
+  }, 1000);
 
   const theme = useDarkMode() ? "dark" : "light";
 
