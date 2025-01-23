@@ -67,12 +67,12 @@ export class VerticalAxis extends Container {
     for (const node of enter) {
       const text = new Text(this.formatNumber(node), {
         fill: colors.textSecondary,
-        fontFamily: "Arial",
+        fontFamily: "Inter-DFX",
         fontSize: FONT_SIZE,
       });
       const tickMark = new Text("-", {
         fill: colors.textSecondary,
-        fontFamily: "Arial",
+        fontFamily: "Inter-DFX",
         fontSize: 10,
       });
 

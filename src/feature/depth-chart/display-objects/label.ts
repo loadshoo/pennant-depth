@@ -10,7 +10,7 @@ type LabelColors = Pick<Colors, "backgroundLabel" | "buyStroke" | "sellStroke">;
 export class Label extends Container {
   private text: Text = new Text("", {
     fill: 0xffffff,
-    fontFamily: "Arial",
+    fontFamily: "Inter-DFX",
     fontSize: 12,
   });
 
