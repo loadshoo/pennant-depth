@@ -1,4 +1,5 @@
 import chroma from "chroma-js";
+import { Colors } from "src/feature/depth-chart/helpers";
 
 export const INVALID_COLOR = 0xffffff;
 
@@ -33,6 +34,26 @@ export function string2hex(input: string): number {
   } catch (e) {
     return INVALID_COLOR;
   }
+}
+
+export function string2hexObj(inputObj: { [key: string]: string }): Colors {
+  const output: Colors = {
+    buyFill: 0,
+    buyStroke: 0,
+    sellFill: 0,
+    sellStroke: 0,
+    backgroundSurface: 0,
+    textPrimary: 0,
+    textSecondary: 0,
+    overlay: 0,
+    backgroundLabel: 0,
+  };
+
+  for (const key in inputObj) {
+    output[key as keyof Colors] = string2hex(inputObj[key]);
+  }
+
+  return output;
 }
 
 export function rgb2hex(rgb: number[] | Float32Array): number {

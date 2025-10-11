@@ -526,6 +526,34 @@ FractionalVolume.args = {
   volumeFormat: (volume: number) => numberFormatter(3).format(volume),
 };
 
+export const CustomColors = Template.bind({});
+CustomColors.args = {
+  data: {
+    buy: AAPL_data.buy.map((priceLevel) => ({
+      price: priceLevel.price,
+      volume: priceLevel.volume / 1000,
+    })),
+    sell: AAPL_data.sell.map((priceLevel) => ({
+      price: priceLevel.price,
+      volume: priceLevel.volume / 1000,
+    })),
+  },
+  priceFormat: (price: number) => numberFormatter(5).format(price),
+  volumeFormat: (volume: number) => numberFormatter(3).format(volume),
+  colorsConfig: {
+    buyFill: "#4f684f",
+    buyStroke: "#70a770",
+    sellFill: "#211313",
+    sellStroke: "#770000",
+    backgroundSurface: "#1b1919",
+    textPrimary: "#000000",
+    textSecondary: "#555555",
+    overlay: "#000000",
+    backgroundLabel: "#160f0f",
+  },
+  strokeWidth: 1,
+};
+
 export const UnsortedPriceLevels = Template.bind({});
 UnsortedPriceLevels.args = {
   midPrice: 0.4404,

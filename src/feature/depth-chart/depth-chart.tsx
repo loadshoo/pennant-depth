@@ -8,7 +8,8 @@ import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 
 import { Chart } from "./chart";
 import styles from "./depth-chart.module.css";
-import { getColors, getDimensions } from "./helpers";
+import { getColors, getDimensions, ColorConfig } from "./helpers";
+import { string2hexObj } from "@ui/renderer";
 
 function defaultVolumeFormat(volume: number) {
   return numberFormatter(0).format(volume);
@@ -65,6 +66,15 @@ export type DepthChartProps = {
    * Common crypto trading pairs
    */
   pairCode?: string;
+
+  /**
+   * Override default colors
+   */
+  colorsConfig?: Partial<ColorConfig>;
+  /**
+   * Width of the stroke around the area curves in pixels
+   */
+  strokeWidth?: number;
 };
 
 export interface DepthChartHandle {
@@ -90,6 +100,8 @@ export const DepthChart = forwardRef(
       notEnoughDataText = "No data",
       theme = "dark",
       pairCode,
+      colorsConfig,
+      strokeWidth,
     }: DepthChartProps,
     ref: React.Ref<DepthChartHandle>,
   ) => {
@@ -110,9 +122,13 @@ export const DepthChart = forwardRef(
      * Create a new instance of the depth chart
      */
     useEffect(() => {
-      const colors = getColors(styleRef?.current);
-      const dimensions = getDimensions(styleRef?.current);
-
+      const colors = colorsConfig
+        ? string2hexObj(colorsConfig)
+        : getColors(styleRef?.current);
+      // console.log("colors", colors, colorsConfig);
+      const dimensions = strokeWidth
+        ? { strokeWidth }
+        : getDimensions(styleRef?.current);
       chartRef.current = new Chart({
         chartView: contentsRef.current,
         axisView: uiRef.current,
@@ -181,10 +197,14 @@ export const DepthChart = forwardRef(
 
     useEffect(() => {
       requestAnimationFrame(() => {
-        chartRef.current.colors = getColors(styleRef?.current);
-        chartRef.current.dimensions = getDimensions(styleRef?.current);
+        chartRef.current.colors = colorsConfig
+          ? string2hexObj(colorsConfig)
+          : getColors(styleRef?.current);
+        chartRef.current.dimensions = strokeWidth
+          ? { strokeWidth }
+          : getDimensions(styleRef?.current);
       });
-    }, [theme]);
+    }, [theme, colorsConfig, strokeWidth]);
 
     useImperativeHandle(ref, () => ({
       update(price: number) {
