@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.11](https://github.com/SamChangi/pennant-depth/compare/v1.1.10...v1.1.11) (2025-10-13)
+
 ### [1.1.10](https://github.com/SamChangi/pennant-depth/compare/v1.1.9...v1.1.10) (2025-01-07)
 
 ### [1.1.9](https://github.com/SamChangi/pennant-depth/compare/v1.1.7...v1.1.9) (2024-12-19)
