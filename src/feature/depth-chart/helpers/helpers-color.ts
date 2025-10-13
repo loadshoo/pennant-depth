@@ -15,6 +15,18 @@ export interface Colors {
   backgroundLabel: number;
 }
 
+export interface ColorConfig {
+  buyFill: string;
+  buyStroke: string;
+  sellFill: string;
+  sellStroke: string;
+  backgroundSurface: string;
+  textPrimary: string;
+  textSecondary: string;
+  overlay: string;
+  backgroundLabel: string;
+}
+
 export function getColors(element: HTMLElement | null): Colors {
   const cssStyleDeclaration = element ? getComputedStyle(element) : null;
 
