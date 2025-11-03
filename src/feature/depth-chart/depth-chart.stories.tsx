@@ -541,10 +541,10 @@ CustomColors.args = {
   priceFormat: (price: number) => numberFormatter(5).format(price),
   volumeFormat: (volume: number) => numberFormatter(3).format(volume),
   colorsConfig: {
-    buyFill: "#4f684f",
-    buyStroke: "#70a770",
-    sellFill: "#211313",
-    sellStroke: "#770000",
+    buyFill: "#2AD4A9",
+    buyStroke: "#2AD4A9",
+    sellFill: "#FE4346",
+    sellStroke: "#FE4346",
     backgroundSurface: "#1b1919",
     textPrimary: "#000000",
     textSecondary: "#555555",
@@ -552,6 +552,7 @@ CustomColors.args = {
     backgroundLabel: "#160f0f",
   },
   strokeWidth: 1,
+  fillAlpha: 0.2,
 };
 
 export const UnsortedPriceLevels = Template.bind({});

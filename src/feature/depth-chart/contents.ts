@@ -84,6 +84,7 @@ export class Contents {
     buyPoints: [number, number][],
     sellPoints: [number, number][],
     offset: number,
+    fillAlpha: number = 0.2,
   ): void {
     const resolution = this.renderer.resolution;
 
@@ -94,6 +95,7 @@ export class Contents {
       this.colors.buyFill,
       this.colors.buyStroke,
       this.dimensions.strokeWidth,
+      fillAlpha,
     );
 
     this.sellCurve.update(
@@ -103,6 +105,7 @@ export class Contents {
       this.colors.sellFill,
       this.colors.sellStroke,
       this.dimensions.strokeWidth,
+      fillAlpha,
     );
   }
 }
