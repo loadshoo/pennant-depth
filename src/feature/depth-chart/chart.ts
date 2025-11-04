@@ -1,7 +1,7 @@
 import { extent, max, mean, min } from "d3-array";
 import { ScaleLinear, scaleLinear } from "d3-scale";
 import EventEmitter from "eventemitter3";
-import { orderBy, sortBy, zip } from "lodash";
+import { fill, orderBy, sortBy, zip } from "lodash";
 
 import cumsum, { getFloatNumber } from "../../util/math/array/cumsum";
 import { Contents } from "./contents";
@@ -46,6 +46,7 @@ export class Chart extends EventEmitter {
     buy: [],
     sell: [],
   };
+  private _fillAlpha: number = 0.2;
 
   /** Indicative price if the auction ended now, 0 if not in auction mode */
   private _indicativePrice: number = 0;
@@ -69,6 +70,7 @@ export class Chart extends EventEmitter {
     volumeFormat: (volume: number) => string;
     colors: Colors;
     dimensions: Dimensions;
+    fillAlpha?: number;
   }) {
     super();
 
@@ -76,6 +78,7 @@ export class Chart extends EventEmitter {
     this.volumeFormat = options.volumeFormat;
     this._colors = options.colors;
     this._dimensions = options.dimensions;
+    this._fillAlpha = options.fillAlpha ?? 0.2;
 
     this.chart = new Contents({
       view: options.chartView,
@@ -292,7 +295,6 @@ export class Chart extends EventEmitter {
 
     this.chart.colors = this._colors;
     this.chart.dimensions = this._dimensions;
-
     this.chart.update(
       cumulativeBuy.map((point) => [
         priceScale(point[0]),
@@ -303,6 +305,7 @@ export class Chart extends EventEmitter {
         flag ? this.height - resolution * AXIS_HEIGHT : volumeScale(point[1]),
       ]),
       resolution * 8 * size,
+      this._fillAlpha,
     );
 
     // TODO: Clean up this logic

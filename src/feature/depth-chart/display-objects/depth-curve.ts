@@ -42,13 +42,13 @@ export class DepthCurve extends Container {
     fill: number = 0xffffff,
     stroke: number = 0,
     width: number = 1,
+    fillAlpha: number = 0.2,
   ): void {
     this.fill = fill;
     this.stroke = stroke;
     this.width = width;
-
     this.area.clear();
-    this.area.beginFill(this.fill, 1);
+    this.area.beginFill(this.fill, fillAlpha);
     this.area.drawArea(
       points.map((point) => [
         point[0],
