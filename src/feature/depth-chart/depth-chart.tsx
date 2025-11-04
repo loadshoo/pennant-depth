@@ -75,6 +75,10 @@ export type DepthChartProps = {
    * Width of the stroke around the area curves in pixels
    */
   strokeWidth?: number;
+  /**
+   * Alpha of the fill area under the curves
+   */
+  fillAlpha?: number;
 };
 
 export interface DepthChartHandle {
@@ -102,6 +106,7 @@ export const DepthChart = forwardRef(
       pairCode,
       colorsConfig,
       strokeWidth,
+      fillAlpha = 0.2,
     }: DepthChartProps,
     ref: React.Ref<DepthChartHandle>,
   ) => {
@@ -139,6 +144,7 @@ export const DepthChart = forwardRef(
         volumeFormat,
         colors,
         dimensions,
+        fillAlpha,
       });
 
       return () => {
