@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/SamChangi/pennant-depth/compare/v1.1.12...v1.2.0) (2025-11-04)
+
+
+### Features
+
+* add fillAlpha property to depth chart and update related components ([4f07a32](https://github.com/SamChangi/pennant-depth/commit/4f07a32ac5139821ff3762df20990bc7370e9347))
+
 ### [1.1.12](https://github.com/SamChangi/pennant-depth/compare/v1.1.11...v1.1.12) (2025-10-13)
 
 ### [1.1.11](https://github.com/SamChangi/pennant-depth/compare/v1.1.10...v1.1.11) (2025-10-13)
